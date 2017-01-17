@@ -1,0 +1,23 @@
+{
+  "name": "miaoxing/message",
+  "description": "Miaoxing Message Plugin",
+  "keywords": [
+    "miaoxing", "message"
+  ],
+  "license": "MIT",
+  "require": {
+    "miaoxing/app": "dev-master@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Miaoxing\\Message\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MiaoxingTest\\Message\\": "tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

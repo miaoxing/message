@@ -1,0 +1,90 @@
+.light-orange {
+  color: #fcac6f!important;
+}
+
+.message-table tbody > tr > td {
+  padding: 15px 0;
+}
+
+.message-table tbody > tr > td {
+  vertical-align: top;
+}
+
+.message-table tbody > tr > td {
+  border-top-color: #eee;
+}
+
+.message-table thead {
+  display: none;
+}
+
+.message-table .head-img {
+  width: 54px;
+  padding: 15px 10px;
+}
+
+.message-table .head-img img {
+  width: 54px;
+  height: 54px;
+  border: 1px solid #cfcfcf
+}
+
+.message-table .media-heading {
+  margin-top: 4px;
+}
+
+.message-table .create-time {
+  color: #999;
+  width: 115px;
+}
+
+.message-table .actions {
+  width: 140px;
+}
+
+.message-table .media-body {
+  word-break: break-all;
+}
+
+.media-actions a:hover {
+  text-decoration: none;
+}
+
+.media-actions i {
+  color: #6FB3E0;
+}
+
+.media-actions i:hover {
+  color: #4F99C6
+}
+
+.media-actions i.fa-star, .media-actions i.fa-reply {
+  visibility: hidden;
+}
+
+.media-actions i.light-orange {
+  visibility: visible;
+}
+
+#message-table_wrapper .row {
+  background: none;
+  border: none;
+}
+
+.dataTables_processing {
+  float: right;
+}
+
+.message-table .mask {
+  display: none;
+}
+
+.dataTables_wrapper .col-sm-12 {
+  padding: 0;
+}
+
+/* 回复消息的表单 */
+.reply-form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+}
