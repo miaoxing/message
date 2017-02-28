@@ -27,7 +27,7 @@ class Message extends \miaoxing\plugin\BaseModel
                 break;
 
             default:
-                $this['content'] = (array)json_decode($this['content'], true);
+                $this['content'] = (array) json_decode($this['content'], true);
         }
     }
 
@@ -55,6 +55,7 @@ class Message extends \miaoxing\plugin\BaseModel
     {
         $appId = wei()->app->getId();
         $this->cache->set('lastReadMessageTime' . $appId, time());
+
         return $this;
     }
 
@@ -66,6 +67,7 @@ class Message extends \miaoxing\plugin\BaseModel
     public function getLastReadMessageTime()
     {
         $appId = wei()->app->getId();
-        return (string)$this->cache->get('lastReadMessageTime' . $appId);
+
+        return (string) $this->cache->get('lastReadMessageTime' . $appId);
     }
 }

@@ -81,6 +81,7 @@ class Message extends \miaoxing\plugin\BaseController
                         // 用户发送的消息
                         $user = wei()->arrayCache->get('user' . $message['userId'], function () use ($message) {
                             $user = wei()->user()->findOrInitById($message['userId']);
+
                             return $user->toArray(['id', 'nickName', 'headImg']);
                         });
                     } else {
@@ -95,12 +96,12 @@ class Message extends \miaoxing\plugin\BaseController
                 if ($req['_format'] == 'csv') {
                     return $this->renderCsv($data);
                 } else {
-                    return $this->json('读取列表成功', 1, array(
+                    return $this->json('读取列表成功', 1, [
                         'data' => $data,
                         'page' => $req['page'],
                         'rows' => $req['rows'],
                         'records' => $messages->count(),
-                    ));
+                    ]);
                 }
 
                 default:
@@ -120,18 +121,18 @@ class Message extends \miaoxing\plugin\BaseController
 
     protected function renderCsv($messages)
     {
-        $data = array();
-        $data[0] = array('用户', '消息内容', '消息类型', '时间', '是否收藏');
+        $data = [];
+        $data[0] = ['用户', '消息内容', '消息类型', '时间', '是否收藏'];
         $types = wei()->message->getOption('types');
 
         foreach ($messages as $message) {
-            $data[] = array(
+            $data[] = [
                 $message['nickName'],
                 is_string($message['content']) ? $message['content'] : '(不支持显示)',
                 $types[$message['msgType']],
                 $message['createTime'],
-                $message['starred'] ? '是' : '否'
-            );
+                $message['starred'] ? '是' : '否',
+            ];
         }
 
         return wei()->csvExporter->export('messages', $data);
@@ -144,21 +145,21 @@ class Message extends \miaoxing\plugin\BaseController
     {
         // 1. 校验提交的数据
         $type = $req['type'] ?: 'text';
-        $validator = wei()->validate(array(
+        $validator = wei()->validate([
             'data' => $req,
             'rules' => [
                 'userId' => 'required',
                 'content' => 'required',
                 'appMsgId' => [
-                    'required' => $type == 'news'
-                ]
+                    'required' => $type == 'news',
+                ],
             ],
-            'names' => array(
+            'names' => [
                 'userId' => '用户',
                 'content' => '消息内容',
-                'appMsgId' => '图文消息编号'
-            )
-        ));
+                'appMsgId' => '图文消息编号',
+            ],
+        ]);
 
         if (!$validator->isValid()) {
             return $this->err($validator->getFirstMessage());
@@ -190,7 +191,7 @@ class Message extends \miaoxing\plugin\BaseController
                 'msgType' => $type,
                 'platformId' => $account::PLATFORM_ID,
                 'content' => $req['content'],
-                'replyMessageId' => (int)$req['replyMessageId'],
+                'replyMessageId' => (int) $req['replyMessageId'],
                 'createTimestamp' => time(),
             ]);
         }
