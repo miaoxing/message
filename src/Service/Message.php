@@ -22,7 +22,7 @@ class Message extends \miaoxing\plugin\BaseModel
     public function afterFind()
     {
         switch ($this['msgType']) {
-            case 'text' :
+            case 'text':
                 $this['content'] = nl2br($this['content']);
                 break;
 

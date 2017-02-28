@@ -1,6 +1,7 @@
 <?php
 
 namespace plugins\message\docs {
+
     /**
      * @property    \Miaoxing\Message\Service\Message $message
      * @method      \Miaoxing\Message\Service\Message|\Miaoxing\Message\Service\Message[] message()
@@ -11,6 +12,7 @@ namespace plugins\message\docs {
 }
 
 namespace {
+
     /**
      * @return \plugins\message\docs\AutoComplete
      */

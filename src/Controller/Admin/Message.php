@@ -103,7 +103,7 @@ class Message extends \miaoxing\plugin\BaseController
                     ));
                 }
 
-            default:
+                default:
                 return get_defined_vars();
         }
     }
@@ -167,11 +167,11 @@ class Message extends \miaoxing\plugin\BaseController
         // 2. 获取当前用户,平台对象的微信账号,及API服务对象
         $user = wei()->user()->findOneById($req['userId']);
         switch (true) {
-            case $user['wechatOpenId'] :
+            case $user['wechatOpenId']:
                 $account = wei()->wechatAccount->getCurrentAccount();
                 break;
 
-            case $user['qqOpenId'] :
+            case $user['qqOpenId']:
                 $account = wei()->qqAccount->getCurrentAccount();
                 break;
 
