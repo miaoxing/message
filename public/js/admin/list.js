@@ -1,4 +1,11 @@
-define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable', 'template', 'jquery-deparam', 'form'], function (time) {
+define([
+  'assets/time',
+  'template',
+  'comps/jquery_lazyload/jquery.lazyload.min',
+  'dataTable',
+  'jquery-deparam',
+  'form'
+], function (time, template) {
   var self = {};
 
   // 消息表格对象
@@ -36,7 +43,6 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
 
     self.table = $('#message-table').dataTable({
       displayLength: 20,
-      dom: "<'row'<'col-sm-12'p<'toolbar'>r>>t<'row'<'col-sm-6'i><'col-sm-6'pr>>",
       ajax: {
         url: $.appendUrl(self.baseUrl, $('#search-form').serialize())
       },
@@ -58,11 +64,13 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
               case 'text':
                 break;
               case 'news':
-                if (typeof full.content.Articles != 'undefined') {
+                if (typeof full.content.Articles !== 'undefined') {
                   // todo 微信的才需要转换
-                  for (var i in full.content.Articles.item) {
-                    full.content.Articles.item[i].PicUrl = $.url('wechat/media/imageProxy', {url: full.content.Articles.item[i].PicUrl});
-                  }
+                  $.each(full.content.Articles.item, function(key, value) {
+                    full.content.Articles.item[key].PicUrl = $.url('wechat/media/imageProxy', {
+                      url: value.PicUrl
+                    });
+                  });
                   full.content = template.render('media-news', full.content);
                 }
                 break;
@@ -86,7 +94,7 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
                 break;
               case 'image':
                 if (full.content.PicUrl) {
-                  full.content = '<img style="max-height: 400px;" src="' + full.content.PicUrl + '" />'
+                  full.content = '<img style="max-height: 400px;" src="' + full.content.PicUrl + '" />';
                 }
                 break;
               default:
@@ -99,7 +107,7 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
         {
           data: 'createTimestamp',
           sClass: 'text-right create-time',
-          render: function (data, type, full) {
+          render: function (data) {
             return '<time title="' + data + '">' + time.timeFormat(data) + '</time>';
           }
         },
@@ -107,18 +115,18 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
           data: 'id',
           sClass: 'actions',
           render: function (data, type, full) {
-            if ('1' == full.starred) {
+            if (full.starred === '1') {
               full.starTitle = '取消收藏';
               full.starClass = 'light-orange';
             } else {
               full.starTitle = '收藏此消息';
               full.starClass = '';
             }
-            return template.render('table-actions', full)
+            return template.render('table-actions', full);
           }
         }
       ],
-      fnCreatedRow: function (row, data, dataIndex) {
+      fnCreatedRow: function (row, data) {
         // 取最大的编号供查询使用
         var id = parseInt(data.id, 10);
         if (id > self.lastId) {
@@ -130,7 +138,7 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
           $(row).hide().prependTo(this).fadeIn();
         }
       },
-      drawCallback: function (settings) {
+      drawCallback: function () {
         self.restart();
       }
     });
@@ -151,9 +159,9 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
         }
       })
       .done(function (result) {
-        if (result.data.length != 0) {
+        if (result.data.length !== 0) {
           // 如果是第一页,直接渲染,否则,提示新消息
-          if (0 == self.table.fnSettings()._iDisplayStart) {
+          if (self.table.fnSettings()._iDisplayStart === 0) {
             self.table.fnAddData(result.data.reverse(), false);
           } else {
             $('.new-message-number').text(result.data.length);
@@ -191,7 +199,7 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
         dataType: 'json',
         data: {
           id: $(this).data('id'),
-          starred: +!icon.hasClass('light-orange')
+          starred: Number(!icon.hasClass('light-orange'))
         },
         success: function (result) {
           $.msg(result);
@@ -204,7 +212,7 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
             }
           }
         }
-      })
+      });
     });
 
     // 显示/隐藏快速回复
@@ -262,7 +270,11 @@ define(['assets/time', 'comps/jquery_lazyload/jquery.lazyload.min', 'dataTable',
 
     // 导出消息到EXCEL
     $('#export-csv').click(function () {
-      var url = $.appendUrl(self.table.fnSettings().ajax.url, {page: 1, rows: 99999, _format: 'csv'});
+      var url = $.appendUrl(self.table.fnSettings().ajax.url, {
+        page: 1,
+        rows: 99999,
+        _format: 'csv'
+      });
       window.location = url;
     });
 

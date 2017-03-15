@@ -6,6 +6,8 @@ class Message extends \miaoxing\plugin\BaseController
 {
     /**
      * 实时消息列表
+     * @param $req
+     * @return array|\Wei\Response
      */
     public function indexAction($req)
     {
@@ -79,11 +81,7 @@ class Message extends \miaoxing\plugin\BaseController
                 foreach ($messages->findAll() as $message) {
                     if ($message['source'] == 1) {
                         // 用户发送的消息
-                        $user = wei()->arrayCache->get('user' . $message['userId'], function () use ($message) {
-                            $user = wei()->user()->findOrInitById($message['userId']);
-
-                            return $user->toArray(['id', 'nickName', 'headImg']);
-                        });
+                        $user = $this->getArrayCache($message);
                     } else {
                         // 公众号回复的消息
                         $user = $account;
@@ -95,18 +93,27 @@ class Message extends \miaoxing\plugin\BaseController
 
                 if ($req['_format'] == 'csv') {
                     return $this->renderCsv($data);
-                } else {
-                    return $this->json('读取列表成功', 1, [
-                        'data' => $data,
-                        'page' => $req['page'],
-                        'rows' => $req['rows'],
-                        'records' => $messages->count(),
-                    ]);
                 }
 
-                default:
+                return $this->json('读取列表成功', 1, [
+                    'data' => $data,
+                    'page' => $req['page'],
+                    'rows' => $req['rows'],
+                    'records' => $messages->count(),
+                ]);
+
+            default:
                 return get_defined_vars();
         }
+    }
+
+    protected function getArrayCache($message)
+    {
+        return wei()->arrayCache->get('user' . $message['userId'], function () use ($message) {
+            $user = wei()->user()->findOrInitById($message['userId']);
+
+            return $user->toArray(['id', 'nickName', 'headImg']);
+        });
     }
 
     /**

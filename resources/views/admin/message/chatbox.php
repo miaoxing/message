@@ -1,39 +1,45 @@
-<ul id="editor-tabs" class="nav nav-tabs padding-12 tab-color-blue background-blue" style="height:42px">
+<ul id="editor-tabs" class="nav nav-tabs padding-12 tab-color-blue background-blue">
   <li class="active">
     <a id="text-tab" data-toggle="tab" href="#text"><i class="fa fa-pencil"></i>&nbsp;文字</a>
   </li>
   <!--
   <li>
       <a data-toggle="tab" href="#news"><i class="fa fa-list-alt"></i>&nbsp;图文消息</a>
-  </li>-->
+  </li>
+  -->
 </ul>
 <div class="tab-content">
   <div id="text" class="tab-pane in active">
     <div class="row">
       <div class="col-lg-12">
-        <form id="message-form" class="form-horizontal" method="post" role="form" action="<?= $url('admin/message/send') ?>">
+        <form id="message-form" class="form-horizontal" method="post" role="form"
+          action="<?= $url('admin/message/send') ?>">
           <div class="form-group">
             <div class="col-lg-12">
-              <textarea id="content" class="form-control" name="content" rows="4"><?= $wei->e($req['message']) ?></textarea>
+              <textarea id="content" class="form-control" name="content" rows="4">
+                <?= $wei->e($req['message']) ?>
+              </textarea>
             </div>
           </div>
-          <button id="submit-btn" class="btn btn-info" type="submit" data-loading-text="处理中..." style="margin-left: 5px">
+          <button id="submit-btn" class="btn btn-info" type="submit" data-loading-text="处理中...">
             <i class="fa fa-check bigger-110"></i>发送
           </button>
           <input type="hidden" name="platformId" value="<?= wei()->wechatAccount->getCurrentAccount()->get('id') ?>">
           <input type="hidden" name="type" value="text">
-          <input type="hidden" id="userId" name="userId" value="<?= $user['id'] ?>">
+          <input type="hidden" id="user-id" name="userId" value="<?= $user['id'] ?>">
         </form>
       </div>
     </div>
   </div>
   <div id="news" class="tab-pane">
     <div class="text-right clearfix">
-      <ul class="news-paginator pagination" style="float: right"></ul>
-      <a href="https://mp.weixin.qq.com" style="line-height: 77px; display: block; margin-right: 8px;" class="pull-right" rel="noreferrer" target="_blank"><i class="icon-external-link"></i>&nbsp;前往公众平台新建图文消息</a>
+      <ul class="news-paginator pagination"></ul>
+      <a href="https://mp.weixin.qq.com" class="pull-right" rel="noreferrer" target="_blank">
+        <i class="icon-external-link"></i>&nbsp;前往公众平台新建图文消息
+      </a>
     </div>
     <ul id="news-list" class="ace-thumbnails">
-      <img style="display: block;margin: 0 auto" src="<?= $asset('assets/images/loading/loading-circle-white.gif') ?>">
+      <img class="article-loading" src="<?= $asset('assets/images/loading/loading-circle-white.gif') ?>">
     </ul>
     <div class="text-right">
       <ul class="news-paginator pagination">
@@ -134,7 +140,8 @@
 
       // 更新文章中真实的图片地址,用于存储到后台
       for (var i in articles[item.app_id].Articles.item) {
-        articles[item.app_id].Articles.item[i].PicUrl = decodeURIComponent(getUrlParam(articles[item.app_id].Articles.item[i].PicUrl, 'url'));
+        articles[item.app_id].Articles.item[i].PicUrl =
+          decodeURIComponent(getUrlParam(articles[item.app_id].Articles.item[i].PicUrl, 'url'));
       }
 
       var newsItem = $(template.render('media-news', list));
@@ -148,7 +155,7 @@
           url: $.url('admin/message/send'),
           data: {
             type: 'news',
-            userId: $('#userId').val(),
+            userId: $('#user-id').val(),
             appMsgId: id,
             content: JSON.stringify(articles[id])
           },

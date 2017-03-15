@@ -1,5 +1,5 @@
 .light-orange {
-  color: #fcac6f!important;
+  color: #fcac6f;
 }
 
 .message-table tbody > tr > td {
@@ -51,24 +51,19 @@
 }
 
 .media-actions i {
-  color: #6FB3E0;
+  color: #6fb3e0;
 }
 
 .media-actions i:hover {
-  color: #4F99C6
+  color: #4f99c6
 }
 
-.media-actions i.fa-star, .media-actions i.fa-reply {
+.media-actions .fa-star, .media-actions .fa-reply {
   visibility: hidden;
 }
 
 .media-actions i.light-orange {
   visibility: visible;
-}
-
-#message-table_wrapper .row {
-  background: none;
-  border: none;
 }
 
 .dataTables_processing {
@@ -87,4 +82,9 @@
 .reply-form textarea {
   width: 100%;
   margin-bottom: 15px;
+}
+
+.article-loading {
+  display: block;
+  margin: 0 auto;
 }
