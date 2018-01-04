@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Message\Service;
 
-class Message extends \miaoxing\plugin\BaseModel
+class Message extends \Miaoxing\Plugin\BaseModel
 {
     protected $types = [
         'text' => '文本',
