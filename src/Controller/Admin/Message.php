@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Message\Controller\Admin;
 
-class Message extends \miaoxing\plugin\BaseController
+class Message extends \Miaoxing\Plugin\BaseController
 {
     /**
      * 实时消息列表
