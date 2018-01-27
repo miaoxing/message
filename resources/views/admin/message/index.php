@@ -22,7 +22,7 @@
 <!-- /row -->
 <?php require $view->getFile('wechat:wechat/media/tpls.php') ?>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require(['plugins/message/js/admin/list'], function (list) {
     list.init({

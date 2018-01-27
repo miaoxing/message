@@ -1,4 +1,4 @@
-<?= $block('css') ?>
+<?= $block->css() ?>
 <link rel="stylesheet" href="<?= $asset('plugins/message/css/admin/list.css') ?>"/>
 <?= $block->end() ?>
 

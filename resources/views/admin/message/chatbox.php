@@ -50,7 +50,7 @@
 
 <?php require $view->getFile('wechat:wechat/media/tpls.php') ?>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require([
     'form',

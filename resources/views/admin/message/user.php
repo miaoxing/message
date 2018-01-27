@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require(['plugins/message/js/admin/list'], function (list) {
     // 列表页显示当前用户所有消息
