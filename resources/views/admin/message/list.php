@@ -40,10 +40,10 @@
   <% if (source == '1') { %>
   <a class="pull-left user-popover" data-id="<%= user.id %>" target="_blank"
     href="<%= $.url('admin/message/user', {userId: user.id}) %>">
-    <img class="media-object" src="<%= user.headImg || '/assets/images/head/default-light.jpg' %>">
+    <img class="media-object" src="<%= user.headImg %>">
   </a>
   <% } else { %>
-  <img class="media-object" src="<%= user.headImg || '/assets/images/head/default-light.jpg' %>">
+  <img class="media-object" src="<%= user.headImg %>">
   <% } %>
 </script>
 
