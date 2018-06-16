@@ -39,7 +39,6 @@
       </a>
     </div>
     <ul id="news-list" class="ace-thumbnails">
-      <img class="article-loading" src="<?= $asset('assets/images/loading/loading-circle-white.gif') ?>">
     </ul>
     <div class="text-right">
       <ul class="news-paginator pagination">
