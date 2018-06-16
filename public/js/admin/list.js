@@ -51,9 +51,6 @@ define([
           data: 'user',
           sClass: 'head-img',
           render: function (data, type, full) {
-            if (!full.user.headImg) {
-              full.user.headImg = '/assets/images/head/default.jpg';
-            }
             return template.render('user-head-img-tpl', full);
           }
         },
