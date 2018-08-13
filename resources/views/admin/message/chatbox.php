@@ -16,9 +16,8 @@
           action="<?= $url('admin/message/send') ?>">
           <div class="form-group">
             <div class="col-lg-12">
-              <textarea id="content" class="form-control" name="content" rows="4">
-                <?= $wei->e($req['message']) ?>
-              </textarea>
+              <textarea id="content" class="form-control" name="content"
+                rows="4"><?= $wei->e($req['message']) ?></textarea>
             </div>
           </div>
           <button id="submit-btn" class="btn btn-info" type="submit" data-loading-text="处理中...">
