@@ -46,7 +46,7 @@
   </div>
 </div>
 
-<?php require $view->getFile('wechat:wechat/media/tpls.php') ?>
+<?php require $view->getFile('@wechat/wechat/media/tpls.php') ?>
 
 <?= $block->js() ?>
 <script>

@@ -11,7 +11,7 @@
   <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <!-- PAGE CONTENT BEGINS -->
     <div class="table-responsive">
-      <?php require $view->getFile('message:admin/message/list.php') ?>
+      <?php require $view->getFile('@message/admin/message/list.php') ?>
     </div>
     <!-- /.table-responsive -->
     <!-- PAGE CONTENT ENDS -->
@@ -20,7 +20,7 @@
 </div>
 
 <!-- /row -->
-<?php require $view->getFile('wechat:wechat/media/tpls.php') ?>
+<?php require $view->getFile('@wechat/wechat/media/tpls.php') ?>
 
 <?= $block->js() ?>
 <script>

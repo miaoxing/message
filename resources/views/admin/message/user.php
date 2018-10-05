@@ -12,9 +12,9 @@
 
 <div class="row">
   <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-    <?php require $this->getFile('message:admin/message/chatbox.php') ?>
+    <?php require $this->getFile('@message/admin/message/chatbox.php') ?>
     <hr>
-    <?php require $this->getFile('message:admin/message/list.php') ?>
+    <?php require $this->getFile('@message/admin/message/list.php') ?>
   </div>
 </div>
 
