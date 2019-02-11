@@ -8,7 +8,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+  <div class="col-12 col-sm-10 offset-sm-1">
     <!-- PAGE CONTENT BEGINS -->
     <div class="table-responsive">
       <?php require $view->getFile('@message/admin/message/list.php') ?>

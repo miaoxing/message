@@ -11,7 +11,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+  <div class="col-12 col-sm-10 offset-sm-1">
     <?php require $this->getFile('@message/admin/message/chatbox.php') ?>
     <hr>
     <?php require $this->getFile('@message/admin/message/list.php') ?>
