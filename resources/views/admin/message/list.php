@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="<?= $asset('plugins/message/css/admin/list.css') ?>"/>
 <?= $block->end() ?>
 
-<div class="well form-well col-sm-12">
+<div class="well col-sm-12">
   <form class="form-inline" id="search-form" role="form">
     <select class="form-control" name="group">
       <option value="all" selected>全部消息</option>
