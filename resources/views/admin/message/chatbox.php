@@ -1,4 +1,4 @@
-<ul id="editor-tabs" class="nav nav-tabs padding-12 tab-color-blue background-blue">
+<ul id="editor-tabs" class="nav nav-tabs">
   <li class="nav-item active">
     <a class="nav-link" id="text-tab" data-toggle="tab" href="#text"><i class="fa fa-pencil"></i>&nbsp;文字</a>
   </li>
