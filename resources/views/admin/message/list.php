@@ -81,7 +81,7 @@
 </script>
 
 <script id="table-actions" type="text/html">
-  <div class="media-actions text-center bigger-130">
+  <div class="media-actions text-center text-xl">
     <a class="star-link" href="javascript:" title="<%= starTitle %>" data-id="<%= id %>">
       <i class="fa fa-star <%= starClass %>"></i>
     </a>
