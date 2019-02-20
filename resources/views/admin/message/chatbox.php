@@ -50,7 +50,6 @@
 <script>
   require([
     'form',
-    'assets/bootstrapPaginator',
     'plugins/message/js/admin/list'
   ], function (form, bp, list) {
     $('#message-form').ajaxForm({
