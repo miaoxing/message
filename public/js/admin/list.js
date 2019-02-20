@@ -3,7 +3,7 @@ define([
   'template',
   'comps/jquery_lazyload/jquery.lazyload.min',
   'plugins/admin/js/data-table',
-  'jquery-deparam',
+  'jquery-unparam',
   'form'
 ], function (time, template) {
   var self = {};
