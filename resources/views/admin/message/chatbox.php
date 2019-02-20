@@ -73,59 +73,10 @@
       }
     });
 
-    // 切换选项卡,加载不同的内容
-    $('#editor-tabs').on('shown.bs.tab', function (e) {
-      var id = $(e.target).attr('href');
-      if (id == '#news') {
-        renderNewsList(1);
-      }
-    });
-
     var $tip;
     var articles = [];
     var newsList = $('#news-list');
     var paginator = $('.news-paginator');
-
-    function renderNewsList(page) {
-      return;
-      $.ajax({
-        url: $.url('wechat/media/newsList'),
-        dataType: 'json',
-        data: {
-          page: page
-        },
-        beforeSend: function () {
-          $.info('加载中...', 10000);
-        },
-        success: function (data) {
-          $.tips.hideAll();
-
-          // 清空已有的数据并逐条渲染
-          newsList.empty();
-          for (var i in data.item) {
-            renderSingleNews(data.item[i]);
-          }
-
-          paginator.bootstrapPaginator({
-            currentPage: 1,
-            totalPages: data.file_cnt / 10,
-            onPageClicked: function (e, originalEvent, type, page) {
-              e.stopImmediatePropagation();
-              renderNewsList(page);
-            }
-          });
-
-          $('img.lazy', newsList).lazyload();
-
-          if (newsList.data('masonry')) {
-            newsList.masonry('destroy');
-          }
-          newsList.masonry({
-            itemSelector: '.news-item'
-          });
-        }
-      })
-    }
 
     function renderSingleNews(item) {
       // 预存到article变量中,用于发送到后台
