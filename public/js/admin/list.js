@@ -2,7 +2,7 @@ define([
   'assets/time',
   'template',
   'comps/jquery_lazyload/jquery.lazyload.min',
-  'dataTable',
+  'plugins/admin/js/data-table',
   'jquery-deparam',
   'form'
 ], function (time, template) {
