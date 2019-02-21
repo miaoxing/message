@@ -1,5 +1,4 @@
 define([
-  'assets/time',
   'template',
   'comps/jquery_lazyload/jquery.lazyload.min',
   'plugins/admin/js/data-table',
@@ -103,10 +102,7 @@ define([
         },
         {
           data: 'createTimestamp',
-          sClass: 'text-right create-time',
-          render: function (data) {
-            return '<time title="' + data + '">' + time.timeFormat(data) + '</time>';
-          }
+          sClass: 'text-right create-time'
         },
         {
           data: 'id',
