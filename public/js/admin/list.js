@@ -2,7 +2,7 @@ define([
   'plugins/app/libs/artTemplate/template.min',
   'comps/jquery_lazyload/jquery.lazyload.min',
   'plugins/admin/js/data-table',
-  'form'
+  'plugins/admin/js/form'
 ], function (time, template) {
   var self = {};
 

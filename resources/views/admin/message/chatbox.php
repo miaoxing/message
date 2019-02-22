@@ -49,7 +49,7 @@
 <?= $block->js() ?>
 <script>
   require([
-    'form',
+    'plugins/admin/js/form',
     'plugins/message/js/admin/list'
   ], function (form, bp, list) {
     $('#message-form').ajaxForm({
