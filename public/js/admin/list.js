@@ -1,5 +1,5 @@
 define([
-  plugins/app/libs/artTemplate/template.min,
+  'plugins/app/libs/artTemplate/template.min',
   'comps/jquery_lazyload/jquery.lazyload.min',
   'plugins/admin/js/data-table',
   'form'
