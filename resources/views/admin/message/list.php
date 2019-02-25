@@ -14,7 +14,7 @@
       <input type="text" class="form-control" name="search" placeholder="请输入消息内容查询">
     </div>
 
-    <div class="pull-right">
+    <div class="float-right">
       <div class="checkbox">
         <label>
           <input type="hidden" value="1" name="fromKeyword">
@@ -38,7 +38,7 @@
 
 <script id="user-head-img-tpl" type="text/html">
   <% if (source == '1') { %>
-  <a class="pull-left user-popover" data-id="<%= user.id %>" target="_blank"
+  <a class="float-left user-popover" data-id="<%= user.id %>" target="_blank"
     href="<%= $.url('admin/message/user', {userId: user.id}) %>">
     <img class="media-object" src="<%= user.headImg %>">
   </a>

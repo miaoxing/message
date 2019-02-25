@@ -31,7 +31,7 @@
   <div id="news" class="tab-pane">
     <div class="text-right clearfix">
       <ul class="news-paginator pagination"></ul>
-      <a href="https://mp.weixin.qq.com" class="pull-right" rel="noreferrer" target="_blank">
+      <a href="https://mp.weixin.qq.com" class="float-right" rel="noreferrer" target="_blank">
         <i class="icon-external-link"></i>&nbsp;前往公众平台新建图文消息
       </a>
     </div>
