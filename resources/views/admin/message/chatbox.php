@@ -106,9 +106,7 @@
             content: JSON.stringify(articles[id])
           },
           dataType: 'json',
-          beforeSend: function () {
-            $.info('加载中...', 10000);
-          },
+          loading: true,
           success: function (result) {
             $.tips.hideAll();
             if ($.isMassMessage) {
