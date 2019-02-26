@@ -108,7 +108,6 @@
           dataType: 'json',
           loading: true,
           success: function (result) {
-            $.tips.hideAll();
             if ($.isMassMessage) {
               massSuccess(result);
             } else {
